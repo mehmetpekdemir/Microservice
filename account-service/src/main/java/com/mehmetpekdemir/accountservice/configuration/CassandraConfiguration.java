@@ -19,7 +19,7 @@ public class CassandraConfiguration extends AbstractCassandraConfiguration {
 	@Value("${spcloud.cassandra.keyspace.name}")
 	private String keyspaceName;
 
-	@Value("${spcloud.cassanda.port}")
+	@Value("${spcloud.cassandra.port}")
 	private int port;
 
 	@Value("${spcloud.cassandra.contact.point}")

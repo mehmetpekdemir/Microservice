@@ -1,0 +1,12 @@
+server:
+  port: 8083
+spcloud:
+  cassandra:
+    keyspace:
+      name: springcloud
+    port: 9042
+    contact:
+      point: 127.0.0.1
+    getEntityBasePackages: com.mehmetpekdemir.accountservice
+    username: cassandra
+    password: cassandra

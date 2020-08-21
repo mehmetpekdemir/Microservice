@@ -16,12 +16,12 @@
 	</parent>
 
 	<dependencies>
-
+	
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-cassandra</artifactId>
 		</dependency>
-
+		
 		<dependency>
 			<groupId>com.codahale.metrics</groupId>
 			<artifactId>metrics-core</artifactId>

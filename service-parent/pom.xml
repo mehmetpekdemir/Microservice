@@ -10,6 +10,7 @@
 		<groupId>com.mehmetpekdemir</groupId>
 		<artifactId>microservice-app</artifactId>
 		<version>1.0.1</version>
+		<relativePath />
 	</parent>
 
 	<dependencies>

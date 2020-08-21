@@ -1,5 +1,12 @@
 server:
   port: 8083
+
+
+spring:
+  application:
+    name: account-service
+    
+    
 spcloud:
   cassandra:
     keyspace:
@@ -10,3 +17,13 @@ spcloud:
     getEntityBasePackages: com.mehmetpekdemir.accountservice
     username: cassandra
     password: cassandra
+
+
+eureka:
+  client:
+    instance:
+      hostname: localhost
+    serviceUrl:
+      defaultZone: http://localhost:8500/eureka/
+       
+    

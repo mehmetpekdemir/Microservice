@@ -7,12 +7,19 @@ import javax.validation.constraints.Size;
 import lombok.Data;
 
 /**
- * 
  * @author MEHMET PEKDEMIR
  * @since 1.0
  */
 @Data
 public class AccountUpdateDTO {
+
+	@NotNull
+	@Size(min = 3, max = 32)
+	private String firstName;
+
+	@NotNull
+	@Size(min = 3, max = 32)
+	private String lastName;
 
 	@NotNull
 	@Size(min = 6, max = 32)

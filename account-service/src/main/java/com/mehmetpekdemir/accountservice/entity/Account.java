@@ -11,7 +11,6 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 /**
- * 
  * @author MEHMET PEKDEMIR
  * @since 1.0
  */
@@ -24,19 +23,31 @@ public class Account {
 	@PrimaryKey
 	private String id = UUID.randomUUID().toString();
 
-	@Column(value = "uname")
+	@Column(value = "first_name")
+	private String firstName;
+
+	@Column(value = "last_name")
+	private String lastName;
+
+	@Column(value = "user_name")
 	private String username;
 
 	@Column(value = "email")
 	private String email;
 
 	@Column(value = "password")
-	private String hashPassword;
+	private String password;
 
-	public Account(String username, String email, String hashPassword) {
+	@Column(value = "is_active")
+	private Boolean active;
+
+	public Account(String firstName, String lastName, String username, String email, String password, Boolean active) {
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.username = username;
 		this.email = email;
-		this.hashPassword = hashPassword;
+		this.password = password;
+		this.active = active;
 	}
 
 }

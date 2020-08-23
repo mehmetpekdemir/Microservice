@@ -4,13 +4,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.mehmetpekdemir.accountservice.dto.AccountCreateDTO;
 import com.mehmetpekdemir.accountservice.dto.AccountUpdateDTO;
 import com.mehmetpekdemir.accountservice.dto.AccountViewDTO;
 import com.mehmetpekdemir.accountservice.entity.Account;
-import com.mehmetpekdemir.accountservice.exception.AccountNotFoundException;
+import com.mehmetpekdemir.accountservice.error.AccountNotFoundException;
 import com.mehmetpekdemir.accountservice.repository.AccountRepository;
 import com.mehmetpekdemir.accountservice.service.AccountService;
 
@@ -26,6 +27,8 @@ import lombok.RequiredArgsConstructor;
 public class AccountServiceImpl implements AccountService {
 
 	private final AccountRepository accountRepository;
+
+	private final PasswordEncoder passwordEncoder;
 
 	@Override
 	public List<AccountViewDTO> getAccounts() {
@@ -47,8 +50,11 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	public AccountViewDTO createAccount(AccountCreateDTO accountCreateDTO) {
-		final Account account = accountRepository.save(new Account(accountCreateDTO.getUsername(),
-				accountCreateDTO.getEmail(), accountCreateDTO.getPassword()));
+		encodeThePassword(accountCreateDTO); // Password encoded
+
+		final Account account = accountRepository.save(new Account(accountCreateDTO.getFirstName(),
+				accountCreateDTO.getLastName(), accountCreateDTO.getUsername(), accountCreateDTO.getEmail(),
+				accountCreateDTO.getPassword(), accountCreateDTO.getActive()));
 
 		return AccountViewDTO.of(account);
 	}
@@ -58,9 +64,12 @@ public class AccountServiceImpl implements AccountService {
 		final Account account = accountRepository.findById(id)
 				.orElseThrow(() -> new AccountNotFoundException(String.format("Account not found with id %d", id)));
 
-		account.setEmail(accountUpdateDTO.getEmail());
+		account.setFirstName(accountUpdateDTO.getFirstName());
+		account.setLastName(accountUpdateDTO.getLastName());
 		account.setUsername(accountUpdateDTO.getUsername());
-		account.setHashPassword(accountUpdateDTO.getPassword());
+		account.setEmail(accountUpdateDTO.getEmail());
+		encodeThePassword(accountUpdateDTO); // Password encoded
+		account.setPassword(accountUpdateDTO.getPassword());
 
 		final Account updatedAccount = accountRepository.save(account);
 		return AccountViewDTO.of(updatedAccount);
@@ -72,6 +81,14 @@ public class AccountServiceImpl implements AccountService {
 				.orElseThrow(() -> new AccountNotFoundException(String.format("Account not found with id %d", id)));
 
 		accountRepository.deleteById(account.getId());
+	}
+
+	private void encodeThePassword(AccountCreateDTO accountCreateDTO) {
+		accountCreateDTO.setPassword(this.passwordEncoder.encode(accountCreateDTO.getPassword()));
+	}
+
+	private void encodeThePassword(AccountUpdateDTO accountUpdateDTO) {
+		accountUpdateDTO.setPassword(this.passwordEncoder.encode(accountUpdateDTO.getPassword()));
 	}
 
 }

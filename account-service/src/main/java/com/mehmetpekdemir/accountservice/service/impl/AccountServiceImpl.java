@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.mehmetpekdemir.accountservice.dto.AccountCreateDTO;
 import com.mehmetpekdemir.accountservice.dto.AccountUpdateDTO;
@@ -23,23 +25,26 @@ import lombok.RequiredArgsConstructor;
  * @since 1.0
  */
 @Service
-@RequiredArgsConstructor
+@RequiredArgsConstructor // Constructor Injection with lombok
 public class AccountServiceImpl implements AccountService {
 
 	private final AccountRepository accountRepository;
 
 	private final PasswordEncoder passwordEncoder;
 
+	@Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
 	@Override
 	public List<AccountViewDTO> getAccounts() {
 		return accountRepository.findAll().stream().map(AccountViewDTO::of).collect(Collectors.toList());
 	}
 
+	@Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
 	@Override
-	public List<AccountViewDTO> sliceForAccounts(Pageable pageable) {
+	public List<AccountViewDTO> paginationForAccounts(Pageable pageable) {
 		return accountRepository.findAll(pageable).stream().map(AccountViewDTO::of).collect(Collectors.toList());
 	}
 
+	@Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
 	@Override
 	public AccountViewDTO getAccountById(String id) {
 		final Account account = accountRepository.findById(id)
@@ -48,6 +53,7 @@ public class AccountServiceImpl implements AccountService {
 		return AccountViewDTO.of(account);
 	}
 
+	@Transactional
 	@Override
 	public AccountViewDTO createAccount(AccountCreateDTO accountCreateDTO) {
 		encodeThePassword(accountCreateDTO); // Password encoded
@@ -59,6 +65,7 @@ public class AccountServiceImpl implements AccountService {
 		return AccountViewDTO.of(account);
 	}
 
+	@Transactional
 	@Override
 	public AccountViewDTO updateAccount(String id, AccountUpdateDTO accountUpdateDTO) {
 		final Account account = accountRepository.findById(id)
@@ -75,6 +82,7 @@ public class AccountServiceImpl implements AccountService {
 		return AccountViewDTO.of(updatedAccount);
 	}
 
+	@Transactional
 	@Override
 	public void deleteAccount(String id) {
 		final Account account = accountRepository.findById(id)

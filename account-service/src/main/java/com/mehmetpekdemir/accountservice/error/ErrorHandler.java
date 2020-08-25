@@ -19,7 +19,7 @@ import lombok.RequiredArgsConstructor;
  * @since 1.0
  */
 @RestController
-@RequiredArgsConstructor
+@RequiredArgsConstructor // Constructor Injection with lombok
 public class ErrorHandler implements ErrorController {
 
 	private final ErrorAttributes errorAttributes;

@@ -24,7 +24,7 @@ import lombok.RequiredArgsConstructor;
 
 /**
  * <p>
- * Port: localhost: 8083
+ * 		Port: localhost: 8083
  * </p>
  * 
  * @author MEHMET PEKDEMIR
@@ -32,7 +32,7 @@ import lombok.RequiredArgsConstructor;
  */
 @RestController
 @RequestMapping("api/")
-@RequiredArgsConstructor
+@RequiredArgsConstructor // Constructor Injection with lombok
 public class AccountAPI {
 
 	private final AccountService accountService;
@@ -44,8 +44,8 @@ public class AccountAPI {
 	}
 
 	@GetMapping("v1/account/slice")
-	public ResponseEntity<List<AccountViewDTO>> sliceForAccounts(Pageable pageable) {
-		final List<AccountViewDTO> accounts = accountService.sliceForAccounts(pageable);
+	public ResponseEntity<List<AccountViewDTO>> paginationForAccounts(Pageable pageable) {
+		final List<AccountViewDTO> accounts = accountService.paginationForAccounts(pageable);
 		return ResponseEntity.ok(accounts);
 	}
 

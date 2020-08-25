@@ -1,0 +1,26 @@
+server:
+  port: 8041
+  
+  
+spring:
+  application:
+    name: ticket-service
+    
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/microservice-app
+#    username: root
+#    password: microservice-app
+#
+#  jpa:
+#    database: mysql
+#    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+#    hibernate:
+#      ddl-auto: create
+    
+
+eureka:
+  client:
+    instance:
+      hostname: localhost
+    serviceUrl:
+      defaultZone: http://localhost:8500/eureka/

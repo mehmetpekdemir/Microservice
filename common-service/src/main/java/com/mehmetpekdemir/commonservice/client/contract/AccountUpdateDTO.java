@@ -1,4 +1,4 @@
-package com.mehmetpekdemir.commonservice.dto;
+package com.mehmetpekdemir.commonservice.client.contract;
 
 import lombok.Data;
 
@@ -8,7 +8,7 @@ import lombok.Data;
  * @since 1.0
  */
 @Data
-public class AccountCreateDTO {
+public class AccountUpdateDTO {
 
 	private String firstName;
 
@@ -19,7 +19,5 @@ public class AccountCreateDTO {
 	private String email;
 
 	private String password;
-
-	private Boolean active = true;
 
 }

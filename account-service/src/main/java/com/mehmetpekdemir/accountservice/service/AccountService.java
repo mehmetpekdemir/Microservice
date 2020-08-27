@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.data.domain.Pageable;
 
-import com.mehmetpekdemir.accountservice.dto.AccountCreateDTO;
-import com.mehmetpekdemir.accountservice.dto.AccountUpdateDTO;
-import com.mehmetpekdemir.accountservice.dto.AccountViewDTO;
+import com.mehmetpekdemir.commonservice.dto.AccountCreateDTO;
+import com.mehmetpekdemir.commonservice.dto.AccountUpdateDTO;
+import com.mehmetpekdemir.commonservice.dto.AccountViewDTO;
 
 /**
  * 

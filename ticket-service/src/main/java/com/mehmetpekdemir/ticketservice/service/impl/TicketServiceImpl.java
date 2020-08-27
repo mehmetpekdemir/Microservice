@@ -1,6 +1,6 @@
 package com.mehmetpekdemir.ticketservice.service.impl;
 
-import org.modelmapper.ModelMapper;
+//import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -8,16 +8,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.mehmetpekdemir.commonservice.AccountServiceClient;
-import com.mehmetpekdemir.commonservice.dto.AccountViewDTO;
-
+import com.mehmetpekdemir.commonservice.client.AccountServiceClient;
+import com.mehmetpekdemir.commonservice.client.contract.AccountViewDTO;
 import com.mehmetpekdemir.ticketservice.dto.TicketDTO;
 import com.mehmetpekdemir.ticketservice.entity.PriorityType;
 import com.mehmetpekdemir.ticketservice.entity.Ticket;
 import com.mehmetpekdemir.ticketservice.entity.TicketStatus;
 import com.mehmetpekdemir.ticketservice.entity.elasticsearch.TicketES;
+import com.mehmetpekdemir.ticketservice.repository.TicketElasticSearchRepository;
 import com.mehmetpekdemir.ticketservice.repository.TicketRepository;
-import com.mehmetpekdemir.ticketservice.repository.elasticsearch.TicketESRepository;
 import com.mehmetpekdemir.ticketservice.service.TicketService;
 
 import lombok.RequiredArgsConstructor;
@@ -33,9 +32,9 @@ public class TicketServiceImpl implements TicketService {
 
 	private final TicketRepository ticketRepository;
 
-	private final TicketESRepository ticketElasticRepository;
+	private final TicketElasticSearchRepository ticketElasticSearchRepository;
 
-	private final ModelMapper modelMapper;
+	// private final ModelMapper modelMapper;
 
 	private final AccountServiceClient accountServiceClient;
 
@@ -75,7 +74,7 @@ public class TicketServiceImpl implements TicketService {
 				.priorityType(ticket.getPriorityType().getLabel()).ticketStatus(ticket.getTicketStatus().getLabel())
 				.ticketDate(ticket.getTicketDate()).build();
 
-		ticketElasticRepository.save(model);
+		ticketElasticSearchRepository.save(model);
 
 		ticketDTO.setId(ticket.getId());
 		return ticketDTO;

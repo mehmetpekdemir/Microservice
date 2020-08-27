@@ -18,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 
 /**
  * <p>
- * 		Port: localhost: 8041
+ * Port: localhost: 8041
  * </p>
  * 
  * @author MEHMET PEKDEMIR

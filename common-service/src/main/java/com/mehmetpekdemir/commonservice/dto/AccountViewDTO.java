@@ -1,12 +1,13 @@
-package com.mehmetpekdemir.accountservice.dto;
+package com.mehmetpekdemir.commonservice.dto;
 
 import java.io.Serializable;
 
-import com.mehmetpekdemir.accountservice.entity.Account;
+import com.mehmetpekdemir.commonservice.entity.Account;
 
 import lombok.Getter;
 
 /**
+ * 
  * @author MEHMET PEKDEMIR
  * @since 1.0
  */
@@ -14,6 +15,8 @@ import lombok.Getter;
 public final class AccountViewDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+
+	private final String id;
 
 	private final String firstName;
 
@@ -23,7 +26,8 @@ public final class AccountViewDTO implements Serializable {
 
 	private final String email;
 
-	private AccountViewDTO(String firstName, String lastName, String username, String email) {
+	private AccountViewDTO(String id, String firstName, String lastName, String username, String email) {
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.username = username;
@@ -31,8 +35,12 @@ public final class AccountViewDTO implements Serializable {
 	}
 
 	public static AccountViewDTO of(Account account) {
-		return new AccountViewDTO(account.getFirstName(), account.getLastName(), account.getUsername(),
+		return new AccountViewDTO(account.getId(), account.getFirstName(), account.getLastName(), account.getUsername(),
 				account.getEmail());
+	}
+
+	public String getFirstNameAndLastName() {
+		return this.firstName + " " + this.lastName;
 	}
 
 }

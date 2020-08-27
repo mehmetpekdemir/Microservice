@@ -1,4 +1,4 @@
-package com.mehmetpekdemir.accountservice.entity;
+package com.mehmetpekdemir.commonservice.entity;
 
 import java.util.UUID;
 
@@ -11,6 +11,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 /**
+ * 
  * @author MEHMET PEKDEMIR
  * @since 1.0
  */

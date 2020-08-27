@@ -3,30 +3,41 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>account-service</artifactId>
-	<name>account-service</name>
-	<description>Account Service</description>
+	<artifactId>common-service</artifactId>
+	<name>common-service</name>
+	<description>Common Service</description>
 	<packaging>jar</packaging>
 
 	<parent>
 		<groupId>com.mehmetpekdemir</groupId>
-		<artifactId>service-parent</artifactId>
+		<artifactId>microservice-app</artifactId>
 		<version>1.0.1</version>
-		<relativePath>../service-parent/pom.xml</relativePath>
 	</parent>
+
 
 	<dependencies>
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-eureka</artifactId>
+			<artifactId>spring-cloud-starter-feign</artifactId>
 			<version>1.4.7.RELEASE</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-cassandra</artifactId>
 		</dependency>
 
 		<dependency>
-			<groupId>com.mehmetpekdemir</groupId>
-			<artifactId>common-service</artifactId>
-			<version>${project.version}</version>
+			<groupId>com.codahale.metrics</groupId>
+			<artifactId>metrics-core</artifactId>
+			<version>3.0.2</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
 		</dependency>
 
 	</dependencies>

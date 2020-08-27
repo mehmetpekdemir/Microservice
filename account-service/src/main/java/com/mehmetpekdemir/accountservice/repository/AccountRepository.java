@@ -3,7 +3,7 @@ package com.mehmetpekdemir.accountservice.repository;
 import org.springframework.data.cassandra.repository.CassandraRepository;
 import org.springframework.stereotype.Repository;
 
-import com.mehmetpekdemir.accountservice.entity.Account;
+import com.mehmetpekdemir.commonservice.entity.Account;
 
 /**
  * 

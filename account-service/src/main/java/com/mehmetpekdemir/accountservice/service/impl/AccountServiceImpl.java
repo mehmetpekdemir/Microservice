@@ -9,13 +9,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.mehmetpekdemir.accountservice.dto.AccountCreateDTO;
-import com.mehmetpekdemir.accountservice.dto.AccountUpdateDTO;
-import com.mehmetpekdemir.accountservice.dto.AccountViewDTO;
-import com.mehmetpekdemir.accountservice.entity.Account;
 import com.mehmetpekdemir.accountservice.error.AccountNotFoundException;
 import com.mehmetpekdemir.accountservice.repository.AccountRepository;
 import com.mehmetpekdemir.accountservice.service.AccountService;
+import com.mehmetpekdemir.commonservice.dto.AccountCreateDTO;
+import com.mehmetpekdemir.commonservice.dto.AccountUpdateDTO;
+import com.mehmetpekdemir.commonservice.dto.AccountViewDTO;
+import com.mehmetpekdemir.commonservice.entity.Account;
 
 import lombok.RequiredArgsConstructor;
 

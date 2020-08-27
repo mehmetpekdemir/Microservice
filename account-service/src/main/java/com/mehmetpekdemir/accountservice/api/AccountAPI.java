@@ -15,16 +15,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mehmetpekdemir.accountservice.dto.AccountCreateDTO;
-import com.mehmetpekdemir.accountservice.dto.AccountUpdateDTO;
-import com.mehmetpekdemir.accountservice.dto.AccountViewDTO;
 import com.mehmetpekdemir.accountservice.service.AccountService;
+import com.mehmetpekdemir.commonservice.dto.AccountCreateDTO;
+import com.mehmetpekdemir.commonservice.dto.AccountUpdateDTO;
+import com.mehmetpekdemir.commonservice.dto.AccountViewDTO;
+import com.mehmetpekdemir.commonservice.shared.GenericResponse;
 
 import lombok.RequiredArgsConstructor;
 
 /**
  * <p>
- * 		Port: localhost: 8083
+ * Port: localhost: 8083
  * </p>
  * 
  * @author MEHMET PEKDEMIR
@@ -71,7 +72,7 @@ public class AccountAPI {
 	@DeleteMapping("v1/account/{id}")
 	public ResponseEntity<?> deleteAccount(@PathVariable("id") String id) {
 		accountService.deleteAccount(id);
-		return ResponseEntity.ok().build();
+		return ResponseEntity.ok(new GenericResponse("Account removed ! "));
 	}
 
 }

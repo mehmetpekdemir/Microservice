@@ -14,7 +14,7 @@ spcloud:
     port: 9042
     contact:
       point: 127.0.0.1
-    getEntityBasePackages: com.mehmetpekdemir.accountservice
+    getEntityBasePackages: com.mehmetpekdemir.commonservice
     username: cassandra
     password: cassandra
 

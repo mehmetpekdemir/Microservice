@@ -5,3 +5,8 @@ spring:
     config:
       profile: native
       uri: http://localhost:8888
+      
+    stream: 
+      bindings:
+        output:
+          destination: msqueue

@@ -10,9 +10,9 @@ import com.mehmetpekdemir.ticketservice.dto.TicketDTO;
 import com.mehmetpekdemir.ticketservice.entity.PriorityType;
 import com.mehmetpekdemir.ticketservice.entity.Ticket;
 import com.mehmetpekdemir.ticketservice.entity.TicketStatus;
-import com.mehmetpekdemir.ticketservice.entity.elasticsearch.TicketES;
-import com.mehmetpekdemir.ticketservice.repository.TicketElasticSearchRepository;
 import com.mehmetpekdemir.ticketservice.repository.TicketRepository;
+import com.mehmetpekdemir.ticketservice.service.TicketElasticSearchService;
+import com.mehmetpekdemir.ticketservice.service.TicketNotificationService;
 import com.mehmetpekdemir.ticketservice.service.TicketService;
 
 import lombok.RequiredArgsConstructor;
@@ -28,9 +28,11 @@ public class TicketServiceImpl implements TicketService {
 
 	private final TicketRepository ticketRepository;
 
-	private final TicketElasticSearchRepository ticketElasticSearchRepository;
-
 	private final AccountServiceClient accountServiceClient;
+
+	private final TicketElasticSearchService ticketElasticSearchService;
+
+	private final TicketNotificationService ticketNotificationService;
 
 	@Transactional
 	@Override
@@ -47,16 +49,14 @@ public class TicketServiceImpl implements TicketService {
 		ticket.setTicketStatus(TicketStatus.valueOf(ticketDTO.getTicketStatus()));
 		ticket.setPriorityType(PriorityType.valueOf(ticketDTO.getPriorityType()));
 
-		ticket = ticketRepository.save(ticket);
+		ticket = ticketRepository.save(ticket); // MySQL save
 
-		final TicketES model = TicketES.builder().id(ticket.getId()).description(ticket.getDescription())
-				.notes(ticket.getNotes()).assignee(accountViewDTO.getBody().getFirstNameAndLastName())
-				.priorityType(ticket.getPriorityType().getLabel()).ticketStatus(ticket.getTicketStatus().getLabel())
-				.ticketDate(ticket.getTicketDate()).build();
-
-		ticketElasticSearchRepository.save(model);
+		ticketElasticSearchService.createTicket(ticket, accountViewDTO.getBody().getFirstNameAndLastName()); //Elastich Search Save
 
 		ticketDTO.setId(ticket.getId());
+
+		ticketNotificationService.sendToQueue(ticket); // sendToQueue
+
 		return ticketDTO;
 	}
 

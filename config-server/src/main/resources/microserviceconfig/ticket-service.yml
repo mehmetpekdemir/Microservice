@@ -1,5 +1,5 @@
 server:
-  port: 8041
+  port: 8502
   
   
 spring:
@@ -16,6 +16,15 @@ spring:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
       ddl-auto: create
+      
+  rabbitmq:
+    username: mehmetpekdemir
+    password: mehmetpekdemir
+  cloud:
+    stream:
+      bindings:
+        output:
+          destination: msqueue
     
 
 eureka:

@@ -26,7 +26,8 @@
 		<module>parent-service</module>
 		<module>account-service</module>	
 		<module>ticket-service</module>
-		<module>common-service</module>	
+		<module>common-service</module>
+		<module>notification-service</module>
 	</modules>
 
 	<dependencyManagement>

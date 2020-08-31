@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: notification-service
+
+  cloud:
+    config:
+      profile: native
+      uri: http://localhost:8888
+
+    stream:
+      bindings:
+        input:
+          destination: msqueue

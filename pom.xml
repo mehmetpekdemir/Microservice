@@ -23,11 +23,12 @@
 	<modules>
 		<module>config-server</module>
 		<module>eureka-server</module>
+		<module>zipkin-server</module>
 		<module>parent-service</module>
 		<module>account-service</module>	
 		<module>ticket-service</module>
 		<module>common-service</module>
-		<module>notification-service</module>
+		<module>notification-service</module>		
 	</modules>
 
 	<dependencyManagement>

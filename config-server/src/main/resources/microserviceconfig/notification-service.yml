@@ -5,6 +5,8 @@ server:
 spring:
   application:
     name: notification-service
+  zipkin: 
+    base-url: http://localhost:9411/
     
     
   rabbitmq:

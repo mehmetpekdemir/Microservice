@@ -1,11 +1,7 @@
 package com.mehmetpekdemir.ticketservice.service.impl;
 
-//import org.modelmapper.ModelMapper;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.mehmetpekdemir.commonservice.client.AccountServiceClient;
@@ -34,23 +30,7 @@ public class TicketServiceImpl implements TicketService {
 
 	private final TicketElasticSearchRepository ticketElasticSearchRepository;
 
-	// private final ModelMapper modelMapper;
-
 	private final AccountServiceClient accountServiceClient;
-
-	@Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
-	@Override
-	public TicketDTO getTicketById(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
-	@Override
-	public Page<TicketDTO> paginationForTickets(Pageable pageable) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Transactional
 	@Override
@@ -78,13 +58,6 @@ public class TicketServiceImpl implements TicketService {
 
 		ticketDTO.setId(ticket.getId());
 		return ticketDTO;
-	}
-
-	@Transactional
-	@Override
-	public TicketDTO updateTicket(String id, TicketDTO ticketDTO) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

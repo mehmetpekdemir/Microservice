@@ -1,23 +1,18 @@
 package com.mehmetpekdemir.ticketservice.service.impl;
 
-import org.modelmapper.ModelMapper;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.mehmetpekdemir.commonservice.AccountServiceClient;
-import com.mehmetpekdemir.commonservice.dto.AccountViewDTO;
-
+import com.mehmetpekdemir.commonservice.client.AccountServiceClient;
+import com.mehmetpekdemir.commonservice.client.contract.AccountViewDTO;
 import com.mehmetpekdemir.ticketservice.dto.TicketDTO;
 import com.mehmetpekdemir.ticketservice.entity.PriorityType;
 import com.mehmetpekdemir.ticketservice.entity.Ticket;
 import com.mehmetpekdemir.ticketservice.entity.TicketStatus;
 import com.mehmetpekdemir.ticketservice.entity.elasticsearch.TicketES;
+import com.mehmetpekdemir.ticketservice.repository.TicketElasticSearchRepository;
 import com.mehmetpekdemir.ticketservice.repository.TicketRepository;
-import com.mehmetpekdemir.ticketservice.repository.elasticsearch.TicketESRepository;
 import com.mehmetpekdemir.ticketservice.service.TicketService;
 
 import lombok.RequiredArgsConstructor;
@@ -33,25 +28,9 @@ public class TicketServiceImpl implements TicketService {
 
 	private final TicketRepository ticketRepository;
 
-	private final TicketESRepository ticketElasticRepository;
-
-	private final ModelMapper modelMapper;
+	private final TicketElasticSearchRepository ticketElasticSearchRepository;
 
 	private final AccountServiceClient accountServiceClient;
-
-	@Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
-	@Override
-	public TicketDTO getTicketById(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
-	@Override
-	public Page<TicketDTO> paginationForTickets(Pageable pageable) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Transactional
 	@Override
@@ -75,17 +54,10 @@ public class TicketServiceImpl implements TicketService {
 				.priorityType(ticket.getPriorityType().getLabel()).ticketStatus(ticket.getTicketStatus().getLabel())
 				.ticketDate(ticket.getTicketDate()).build();
 
-		ticketElasticRepository.save(model);
+		ticketElasticSearchRepository.save(model);
 
 		ticketDTO.setId(ticket.getId());
 		return ticketDTO;
-	}
-
-	@Transactional
-	@Override
-	public TicketDTO updateTicket(String id, TicketDTO ticketDTO) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

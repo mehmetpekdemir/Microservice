@@ -12,9 +12,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.mehmetpekdemir.accountservice.error.AccountNotFoundException;
 import com.mehmetpekdemir.accountservice.repository.AccountRepository;
 import com.mehmetpekdemir.accountservice.service.AccountService;
-import com.mehmetpekdemir.commonservice.dto.AccountCreateDTO;
-import com.mehmetpekdemir.commonservice.dto.AccountUpdateDTO;
-import com.mehmetpekdemir.commonservice.dto.AccountViewDTO;
+import com.mehmetpekdemir.commonservice.client.contract.AccountCreateDTO;
+import com.mehmetpekdemir.commonservice.client.contract.AccountUpdateDTO;
+import com.mehmetpekdemir.commonservice.client.contract.AccountViewDTO;
 import com.mehmetpekdemir.commonservice.entity.Account;
 
 import lombok.RequiredArgsConstructor;

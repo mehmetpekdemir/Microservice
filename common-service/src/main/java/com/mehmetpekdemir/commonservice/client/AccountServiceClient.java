@@ -1,11 +1,11 @@
-package com.mehmetpekdemir.commonservice;
+package com.mehmetpekdemir.commonservice.client;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.mehmetpekdemir.commonservice.dto.AccountViewDTO;
+import com.mehmetpekdemir.commonservice.client.contract.AccountViewDTO;
 
 /**
  * 

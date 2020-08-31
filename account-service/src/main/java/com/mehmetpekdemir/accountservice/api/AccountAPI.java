@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mehmetpekdemir.accountservice.service.AccountService;
-import com.mehmetpekdemir.commonservice.dto.AccountCreateDTO;
-import com.mehmetpekdemir.commonservice.dto.AccountUpdateDTO;
-import com.mehmetpekdemir.commonservice.dto.AccountViewDTO;
+import com.mehmetpekdemir.commonservice.client.contract.AccountCreateDTO;
+import com.mehmetpekdemir.commonservice.client.contract.AccountUpdateDTO;
+import com.mehmetpekdemir.commonservice.client.contract.AccountViewDTO;
 import com.mehmetpekdemir.commonservice.shared.GenericResponse;
 
 import lombok.RequiredArgsConstructor;

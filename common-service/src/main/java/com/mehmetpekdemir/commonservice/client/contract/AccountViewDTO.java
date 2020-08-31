@@ -1,4 +1,4 @@
-package com.mehmetpekdemir.commonservice.dto;
+package com.mehmetpekdemir.commonservice.client.contract;
 
 import java.io.Serializable;
 

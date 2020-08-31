@@ -1,8 +1,5 @@
 package com.mehmetpekdemir.ticketservice.service;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-
 import com.mehmetpekdemir.ticketservice.dto.TicketDTO;
 
 /**
@@ -12,12 +9,6 @@ import com.mehmetpekdemir.ticketservice.dto.TicketDTO;
  */
 public interface TicketService {
 
-	TicketDTO getTicketById(String id);
-
-	Page<TicketDTO> paginationForTickets(Pageable pageable);
-
 	TicketDTO createTicket(TicketDTO ticketDTO);
-
-	TicketDTO updateTicket(String id, TicketDTO ticketDTO);
 
 }

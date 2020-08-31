@@ -10,9 +10,9 @@
 
 	<parent>
 		<groupId>com.mehmetpekdemir</groupId>
-		<artifactId>service-parent</artifactId>
+		<artifactId>parent-service</artifactId>
 		<version>1.0.1</version>
-		<relativePath>../service-parent/pom.xml</relativePath>
+		<relativePath>../parent-service/pom.xml</relativePath>
 	</parent>
 
 	<dependencies>

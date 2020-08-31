@@ -21,12 +21,12 @@
 	</properties>
 
 	<modules>
-		<module>service-parent</module>
-		<module>account-service</module>
 		<module>config-server</module>
 		<module>eureka-server</module>
+		<module>parent-service</module>
+		<module>account-service</module>	
 		<module>ticket-service</module>
-		<module>common-service</module>
+		<module>common-service</module>	
 	</modules>
 
 	<dependencyManagement>

@@ -4,6 +4,9 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>zipkin-server</artifactId>
+	<name>zipkin-server</name>
+	<description>Zipkin Server</description>
+	<packaging>jar</packaging>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -41,10 +44,49 @@
 
 	<build>
 		<plugins>
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.26.0</version>
+				<extensions>true</extensions>
+				<configuration>
+					<verbose>true</verbose>
+					<images>
+						<image>
+							<name>${project.artifactId}:${project.version}</name>
+							<build>
+								<from>adoptopenjdk/openjdk11</from>
+								<entryPoint>
+									<exec>
+										<args>java</args>
+										<args>-jar</args>
+										<args>/maven/${project.artifactId}-${project.version}.jar</args>
+									</exec>
+								</entryPoint>
+								<assembly>
+									<descriptorRef>artifact</descriptorRef>
+								</assembly>
+							</build>
+						</image>
+					</images>
+				</configuration>
+				<executions>
+					<execution>
+						<id>build</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>build</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
 		</plugins>
 	</build>
 

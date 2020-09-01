@@ -1,5 +1,5 @@
 server:
-  port: 8508
+  port: ${SERVER_PORT:8508}
 
 spring:
   application:
@@ -14,7 +14,7 @@ eureka:
   client:
     registryFetchIntervalSeconds: 5
     serviceUrl:
-      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:8500}/eureka/
+      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:8500}/eureka/}
 
 management:
   endpoints:

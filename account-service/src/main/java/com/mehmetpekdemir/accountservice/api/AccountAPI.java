@@ -38,7 +38,7 @@ public class AccountAPI {
 
 	private final AccountService accountService;
 
-	@GetMapping("v1/accounts")
+	@GetMapping("v1/account")
 	public ResponseEntity<List<AccountViewDTO>> getAccounts() {
 		final List<AccountViewDTO> accounts = accountService.getAccounts();
 		return ResponseEntity.ok(accounts);

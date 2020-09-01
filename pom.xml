@@ -8,12 +8,28 @@
 	<version>1.0.1</version>
 	<packaging>pom</packaging>
 
+	<name>Spring Cloud Microservice App </name>
+	<description>Spring Cloud Microservice App </description>
+
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.2.6.RELEASE</version>
 		<relativePath />
 	</parent>
+
+	<developers>
+		<developer>
+			<id>mehmetp</id>
+			<name>MEHMET PEKDEMIR</name>
+			<email>mehmetpekdemir06@hotmail.com</email>
+			<roles>
+				<role>
+                    Software Engineer
+                </role>
+			</roles>
+		</developer>
+	</developers>
 
 	<properties>
 		<java.version>11</java.version>
@@ -24,10 +40,11 @@
 		<module>config-server</module>
 		<module>eureka-server</module>
 		<module>zipkin-server</module>
+		<module>admin-server</module>
 		<module>gateway-server</module>
 		<module>hystrix-dashboard</module>
 		<module>parent-service</module>
-		<module>account-service</module>	
+		<module>account-service</module>
 		<module>ticket-service</module>
 		<module>common-service</module>
 		<module>notification-service</module>

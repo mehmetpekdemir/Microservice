@@ -6,12 +6,12 @@ spring:
   application:
     name: account-service
   zipkin: 
-    base-url: http://localhost:9411/
+    base-url: ${ZIPKIN_SERVER_URL:http://localhost:9411}
       
   boot:
     admin:
       client:
-        url: http://localhost:8508
+        url: ${SPRING_BOOT_ADMIN_SERVER_URL:http://localhost:8508}
 
 management:
   endpoints:
@@ -22,20 +22,25 @@ management:
 spcloud:
   cassandra:
     keyspace:
-      name: springcloud
-    port: 9042
+      name: ${CASSANDRA_SERVER_KEYSPACE:springcloud}
+      
+    port: ${CASSANDRA_SERVER_PORT:9042}
+    
     contact:
-      point: 127.0.0.1
+      point: ${CASSANDRA_SERVER_HOST:localhost}
+      
     getEntityBasePackages: com.mehmetpekdemir.commonservice
-    username: cassandra
-    password: cassandra
+    
+    username: ${CASSANDRA_SERVER_USERNAME:cassandra}
+    password: ${CASSANDRA_SERVER_USERNAME:cassandra}
 
 
 eureka:
   client:
     instance:
-      hostname: localhost
+      hostname: ${EUREKA_SERVER_HOSTNAME:localhost}
+      
     serviceUrl:
-      defaultZone: http://localhost:8500/eureka/
+      defaultZone: ${EUREKA_SERVER_URL:http://localhost:8500/eureka/}
        
     

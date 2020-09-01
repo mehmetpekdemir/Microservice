@@ -11,7 +11,7 @@ spring:
   boot:
     admin:
       client:
-        url: http://localhost:8508
+        url: ${SPRING_BOOT_ADMIN_SERVER_URL:http://localhost:8508}
 
 management:
   endpoints:
@@ -35,6 +35,6 @@ management:
 eureka:
   client:
     instance:
-      hostname: localhost
+      hostname: ${EUREKA_SERVER_HOST:localhost}
     serviceUrl:
-      defaultZone: http://localhost:8500/eureka/
+      defaultZone: ${EUREKA_SERVER_URL:http://localhost:8500/eureka/}

@@ -66,15 +66,19 @@ For building and running the application you need:
 - [Lombok](https://projectlombok.org/)
 
 ### Build & Run
+
 ```
   docker-compose -f "YOUR_LOCATION\docs\docker-compose.yml" up -d 
 ```
+
 ```
   mvn clean install 
 ```
+
 ```
   CREATE KEYSPACE springcloud WITH replication = {'class':'SimpleStrategy','replication_factor':3};
 ```
+
 ```
   CREATE SCHEMA `microserviceapp`
 ```
@@ -82,13 +86,21 @@ For building and running the application you need:
 ### Ports
 ```
   Config server port : http://localhost:8888
+  
   Eureka server port : http://localhost:8500
+  
   Zipkin server port : http://localhost:9411
+  
   Gateway port : http://localhost:8088
+  
   HystrixDasboard port: http://localhost:8080
+  
   Admin server : http://localhost:8508
+  
   Account service : http://localhost:8501
+  
   Ticket service : http://localhost:8502
+  
   Notification service : http://localhost:8503
   
 ```

@@ -4,13 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.mehmetpekdemir</groupId>
-
 	<artifactId>microservice-app</artifactId>
-	<name>Spring Cloud Microservice App </name>
-	<description>Spring Cloud Microservice App </description>
+	<version>1.0.1</version>
 	<packaging>pom</packaging>
 
-	<version>1.0.1</version>
+	<name>Spring Cloud Microservice App </name>
+	<description>Spring Cloud Microservice App </description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -25,7 +24,9 @@
 			<name>MEHMET PEKDEMIR</name>
 			<email>mehmetpekdemir06@hotmail.com</email>
 			<roles>
-				<role>Software Engineer</role>
+				<role>
+                    Software Engineer
+                </role>
 			</roles>
 		</developer>
 	</developers>

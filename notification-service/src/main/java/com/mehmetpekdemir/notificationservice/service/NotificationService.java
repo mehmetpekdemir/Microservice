@@ -9,6 +9,9 @@ import org.springframework.cloud.stream.messaging.Sink;
 import com.mehmetpekdemir.commonservice.messaging.TicketNotification;
 
 /**
+ * <p>
+ * Port: localhost: 8503
+ * </p>
  * 
  * @author MEHMET PEKDEMIR
  * @since 1.0

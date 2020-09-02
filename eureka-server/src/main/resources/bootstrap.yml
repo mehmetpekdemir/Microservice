@@ -1,12 +1,7 @@
-server:
-  port: ${SERVER_PORT:8888}
-
 spring:
-    
   application:
     name: eureka-server
-    
   cloud:
     config: 
       profile: native
-      uri: ${CONFIG_SERVER_URL:http://localhost:8888}
+      uri: http://localhost:8888

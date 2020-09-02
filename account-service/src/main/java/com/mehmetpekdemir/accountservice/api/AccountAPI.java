@@ -24,9 +24,6 @@ import com.mehmetpekdemir.commonservice.shared.GenericResponse;
 import lombok.RequiredArgsConstructor;
 
 /**
- * <p>
- * Port: localhost: 8501
- * </p>
  * 
  * @author MEHMET PEKDEMIR
  * @since 1.0

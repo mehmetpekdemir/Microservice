@@ -24,9 +24,7 @@
 			<name>MEHMET PEKDEMIR</name>
 			<email>mehmetpekdemir06@hotmail.com</email>
 			<roles>
-				<role>
-                    Software Engineer
-                </role>
+				<role>Software Engineer</role>
 			</roles>
 		</developer>
 	</developers>

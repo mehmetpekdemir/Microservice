@@ -12,8 +12,8 @@
 		<groupId>com.mehmetpekdemir</groupId>
 		<artifactId>microservice-app</artifactId>
 		<version>1.0.1</version>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
-
 
 	<dependencies>
 

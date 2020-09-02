@@ -12,14 +12,10 @@ import com.mehmetpekdemir.ticketservice.service.TicketService;
 import lombok.RequiredArgsConstructor;
 
 /**
- * <p>
- * Port: localhost: 8502
- * </p>
  * 
  * @author MEHMET PEKDEMIR
  * @since 1.0
  */
-
 @RestController
 @RequestMapping("api/")
 @RequiredArgsConstructor // Constructor Injection with lombok
